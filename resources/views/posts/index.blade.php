@@ -7,17 +7,19 @@
 
                         <div>
                             @foreach ($post->tags as $tag)
-                                <a href="" class="inline-block px-3 h-6 {{ 'bg-' . $tag->color . '-600' }} text-white rounded-full">
+                                <a href="{{ route('post.tag', $tag) }}" class="inline-block px-3 h-6 {{ 'bg-' . $tag->color . '-600' }} text-white rounded-full">
                                     {{ $tag->name }}
                                 </a>
                             @endforeach
                         </div>
 
-                        <h1 class="text-4xl text-black leading-8 font-bold">
-                            <a href="">
+                        <h1 class="text-4xl text-black leading-8 font-bold mt-2">
+                            <a href="{{ route('post.show', $post) }}">
                                 {{ $post->name }}
                             </a>
                         </h1>
+
+                        <span>{{ $post->created_at->diffForHumans() }}</span>
                     </div>
                 </article>
             @endforeach
